@@ -1,2 +1,2 @@
 # Trie-Visualization
-A GUI visual representation of a Trie Data Structure
+A visualization application for the Trie Data Structure.
