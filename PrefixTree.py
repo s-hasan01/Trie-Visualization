@@ -15,11 +15,13 @@ class PrefixTree:
     char: The character stored in the node.
     children: The subtrees of the node.
     value: The word constructed by the path leading upto the node.
+    words: The words contained in the Trie.
 
     """
     _char: str
     _children: Dict[str, PrefixTree]
     _value: str
+    _words: Dict[str, PrefixTree]
 
     def __init__(self, char: str = '', value: str = '') -> None:
         """
@@ -31,6 +33,7 @@ class PrefixTree:
         self._char = char
         self._value = value
         self._children = {}
+        self._words = {}
 
     def insert(self, word: str) -> None:
         """
@@ -45,6 +48,7 @@ class PrefixTree:
                 curr._children[char] = PrefixTree(char)
             curr = curr._children[char]
         curr._value = word
+        self._words[word] = curr
 
     def remove(self, word: str) -> None:
         """
@@ -119,11 +123,10 @@ class PrefixTree:
 
         return curr._value == word
 
+    def getWords(self) -> Dict[str, PrefixTree]:
+        """
+        Returns a dictionary containing all the words present in the Trie.
 
-if __name__ == '__main__':
-    tree = PrefixTree()
-    tree.insert('hello')
-    tree.insert('logarithm')
-    tree.insert('awesome')
-    tree.insert('aardvark')
-    print(tree.sort())
+        :return: Dict[str, PrefixTree]
+        """
+        return self._words
