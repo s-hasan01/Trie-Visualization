@@ -34,7 +34,7 @@ class AbstractGUI(QMainWindow):
 
     def update(self) -> None:
         """
-        Updates the during execution.
+        Updates the application during execution.
 
         :return: None
         """
